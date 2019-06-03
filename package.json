@@ -3,14 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cypress": "^3.3.1",
+    "emotion": "^10.0.9",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.1",
+    "express": "^4.17.1",
+    "jest": "24.7.1",
+    "nodemon": "^1.19.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-redux": "^7.0.3",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "3.0.1",
+    "react-spinkit": "^3.0.0",
+    "react-test-renderer": "^16.8.6",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -27,5 +40,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.13.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-standard": "^4.0.0"
   }
 }
