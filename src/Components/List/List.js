@@ -8,7 +8,7 @@ import Spinner from 'react-spinkit'
 import { connect } from 'react-redux'
 import { updateShipList, getCharacters } from '../../redux/actions'
 
-import Ship from '../Ship/Ship'
+import ListItem from '../ListItem/ListItem'
 
 class List extends Component {
   constructor (props) {
@@ -99,38 +99,13 @@ class List extends Component {
             if (index % 8 === 0 && index >= 1) {
               return (
                 <>
-                  <p key = {index}>CHARACTER</p>
+                  <ListItem data = { ship } key = { `ship-${index}` } />
+                  <p key ={`character-${index}`}>Character Name</p>
                 </>
               )
             }
             return (
-              <p key={ship.url} className={css`
-                  margin: 20px;
-                `}>
-                <Link
-                  to={{
-                    pathname: `/ship/${id}/`,
-                    state: { shipListId: index }
-                  }}
-                  className = {css`
-                      text-decoration: none;
-                      color: black;
-                      background-color: #eee;
-                      width:100%;
-                      display:block;
-                      padding:30px;
-                      transition: ease background-color .3s;
-                        &:hover{
-                          background-color:#ddd;
-                        transition: ease background-color .3s;
-                      }
-                    `}
-                >
-                  <strong>{ship.name}</strong><br />
-                    Made By: {ship.manufacturer} <br />
-                    Cost: {ship.cost_in_credits}
-                </Link>
-              </p>
+              <ListItem data = {ship} key={`ship-${index}`} />
             )
           })}
         {this.state.loading &&

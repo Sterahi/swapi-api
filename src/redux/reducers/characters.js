@@ -10,7 +10,6 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case CHARACTER:
       const { characters } = action.payload
-      console.log(action.payload)
       return {
         ...state,
         characters
