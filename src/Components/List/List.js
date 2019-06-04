@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 // Eye Candy
-import { css } from 'emotion'
+import { css, cx } from 'emotion'
 import Spinner from 'react-spinkit'
 // Redux
 import { connect } from 'react-redux'
@@ -10,13 +10,13 @@ import { updateShipList, getCharacters } from '../../redux/actions'
 
 import ListItem from '../ListItem/ListItem'
 
-class List extends Component {
+export class List extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      ships: this.props.shipList.ships,
+      ships: [],
       characters: [],
-      page: this.props.shipList.page,
+      page: 1,
       loading: false,
       hasMore: true
     }
@@ -48,19 +48,16 @@ class List extends Component {
     }).then(data => {
       array = this.state.ships.concat(data.results)
       let page = this.state.page
-      // set length from API
       if (data.results.length % 10 !== 0) {
         this.setState({
           hasMore: false
         })
       }
-      // set local state values to send to redux.
       this.setState({
         loading: false,
         ships: array,
         page: page += 1
       }, () => {
-        // Use setState's callback to wait for the state to set & then update our store
         this.handleUpdateShipList(this.state.ships, this.state.page)
       })
     })
@@ -69,7 +66,7 @@ class List extends Component {
 
   getCharacter () {
     this.setState({ loading: true })
-    const response = fetch('https://swapi.co/api/people/').then(res => {
+    fetch('https://swapi.co/api/people/').then(res => {
       return res.json()
     }).then(characters => {
       this.setState({
@@ -87,11 +84,13 @@ class List extends Component {
 
   render () {
     let id = 0
+    const ships = this.state.ships
+    const loader = css` text-align:center;`
     return (
       <div className='list-view'>
         <h2>List View</h2>
         {
-          (this.props.shipList.ships).map((ship, index) => {
+          (ships || []).map((ship, index) => {
             id = ship.url.split('/')
             // second last index because of trailing /
             // this is for fallback calling.
@@ -113,7 +112,7 @@ class List extends Component {
             )
           })}
         {this.state.loading &&
-          <div className={css` text-align:center;`}>
+          <div className={cx(loader, 'loader')}>
             <Spinner />
           </div>
         }

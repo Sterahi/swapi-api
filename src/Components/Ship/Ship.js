@@ -7,8 +7,6 @@ import { connect } from 'react-redux'
 import { css } from 'emotion'
 import Spinner from 'react-spinkit'
 
-import './Ship.css'
-
 class Ship extends Component {
   constructor () {
     super()

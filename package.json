@@ -5,7 +5,7 @@
   "dependencies": {
     "cypress": "^3.3.1",
     "emotion": "^10.0.9",
-    "enzyme": "^3.9.0",
+    "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.13.1",
     "express": "^4.17.1",
     "jest": "24.7.1",
@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "node_modules/cypress/bin/cypress open",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
