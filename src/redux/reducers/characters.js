@@ -3,16 +3,16 @@ import {
 } from '../actionTypes'
 
 const initialState = {
-  characters: []
+  character: []
 }
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case CHARACTER:
-      const { characters } = action.payload
+      const { character } = action.payload
       return {
         ...state,
-        characters
+        character
       }
     default:
       return state

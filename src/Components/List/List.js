@@ -97,10 +97,14 @@ class List extends Component {
             // this is for fallback calling.
             id = id[id.length - 2]
             if (index % 8 === 0 && index >= 1) {
+              let character
+              if (this.props.characters.character[index / 8] !== undefined) {
+                character = <p key ={`character-${index}`}>{this.props.characters.character[index / 8].name}</p>
+              }
               return (
                 <>
                   <ListItem data = { ship } key = { `ship-${index}` } />
-                  <p key ={`character-${index}`}>Character Name</p>
+                  {character}
                 </>
               )
             }
